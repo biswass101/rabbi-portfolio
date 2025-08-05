@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import profilePhoto from '../../assets/profile-photo.png'; // Adjust the path as necessary
+import profilePhoto from '../../assets/profile-photo.jpg'; // Adjust the path as necessary
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);

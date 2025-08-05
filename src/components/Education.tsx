@@ -93,10 +93,10 @@ const Education = () => {
                     <p className="text-muted-foreground">{edu.year}</p>
                   </div>
                   
-                  <div className="flex items-center space-x-2">
+                  {/* <div className="flex items-center space-x-2">
                     <Award className="w-4 h-4 text-accent" />
                     <span className="font-semibold text-accent">{edu.cgpa}</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}
