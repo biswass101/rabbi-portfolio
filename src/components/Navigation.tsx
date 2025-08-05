@@ -32,10 +32,10 @@ const Navigation = () => {
         : "bg-transparent"
     )}>
       <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <a href="#home" className="text-base xl:text-2xl font-bold gradient-text">
+        <div className="flex items-center justify-center">
+          {/* <a href="#home" className="text-base xl:text-2xl font-bold gradient-text">
             MD G. RABBI
-          </a>
+          </a> */}
           
           <div className="hidden md:flex items-center space-x-2 md:space-x-4 lg:space-x-8">
             {navItems.map((item) => (

@@ -49,7 +49,7 @@ const HeroSection = () => {
 
         {/* Professional Summary */}
         <div className={`mt-16 ${isVisible ? 'fade-in-up animate' : 'fade-in-up'} animation-delay-1000`}>
-          <div className="glass-effect rounded-2xl p-8 max-w-4xl mx-auto">
+          <div className="glass-effect rounded-2xl p-8 container mx-auto">
             <h2 className="text-2xl font-bold text-center mb-6 gradient-text">Professional Summary</h2>
             <p className="text-lg text-center leading-relaxed text-muted-foreground">
               Experienced IT Support and Infrastructure Specialist with 6+ years of proven expertise in system

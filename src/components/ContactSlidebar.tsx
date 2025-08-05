@@ -8,8 +8,8 @@ const ContactSidebar = () => {
     {
       id: 'phone',
       icon: Phone,
-      detail: '01929-287104',
-      href: 'tel:01929287104'
+      detail: '+880 17-66665517',
+      href: 'tel:+880 17-66665517'
     },
     {
       id: 'email',
