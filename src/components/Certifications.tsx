@@ -1,0 +1,116 @@
+import { useEffect, useRef, useState } from 'react';
+import { 
+  Award, 
+  Server, 
+  Mail, 
+  Wrench, 
+  Network, 
+  Code 
+} from 'lucide-react';
+
+const Certifications = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const certifications = [
+    {
+      icon: Award,
+      title: "Lean Six Sigma White Belt",
+      provider: "Gildan",
+      duration: "Jul 2024 – Sep 2024",
+      color: "from-yellow-500 to-orange-500"
+    },
+    {
+      icon: Server,
+      title: "Windows Server 2022 Administration",
+      provider: "Udemy",
+      duration: "26 hrs",
+      color: "from-blue-500 to-indigo-500"
+    },
+    {
+      icon: Mail,
+      title: "Office 365 & Exchange Online",
+      provider: "Udemy",
+      duration: "5.5 hrs",
+      color: "from-green-500 to-teal-500"
+    },
+    {
+      icon: Wrench,
+      title: "IT Troubleshooting Skills",
+      provider: "Udemy",
+      duration: "1.5 hrs",
+      color: "from-red-500 to-pink-500"
+    },
+    {
+      icon: Network,
+      title: "CCNA",
+      provider: "CSL Training",
+      duration: "72 hrs",
+      color: "from-purple-500 to-violet-500"
+    },
+    {
+      icon: Code,
+      title: "Web Design & Development (PHP)",
+      provider: "BITM",
+      duration: "Full Course",
+      color: "from-cyan-500 to-blue-500"
+    }
+  ];
+
+  return (
+    <section ref={sectionRef} id="certifications" className="py-20 relative">
+      <div className="container mx-auto px-6">
+        <div className={`text-center mb-16 ${isVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
+          <h2 className="text-4xl font-bold mb-4 gradient-text">Certifications & Training</h2>
+          <p className="text-xl text-muted-foreground">Professional development and continuous learning</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {certifications.map((cert, index) => {
+            const Icon = cert.icon;
+            return (
+              <div
+                key={index}
+                className={`glass-effect rounded-xl p-6 hover:scale-105 transition-all duration-500 group ${
+                  isVisible ? 'fade-in-up animate' : 'fade-in-up'
+                }`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="space-y-4">
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${cert.color} p-3`}>
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground mb-2">{cert.title}</h3>
+                    <p className="text-primary font-semibold">{cert.provider}</p>
+                    <p className="text-sm text-muted-foreground">{cert.duration}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Certifications;
