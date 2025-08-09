@@ -47,7 +47,7 @@ const ContactSidebar = () => {
                 href={item.href}
                 target={item.id === 'linkedin' ? '_blank' : undefined}
                 rel={item.id === 'linkedin' ? 'noopener noreferrer' : undefined}
-                className="block w-12 h-12 glass-effect rounded-full flex items-center justify-center text-primary hover:text-accent transition-all duration-300 hover:scale-110 hover:animate-glow"
+                className="block w-10 h-10 md:w-12 md:h-12 glass-effect rounded-full flex items-center justify-center text-primary hover:text-accent transition-all duration-300 hover:scale-110 hover:animate-glow"
               >
                 <Icon size={20} />
               </a>

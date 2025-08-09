@@ -11,7 +11,7 @@ import SkillsAndInterests from '@/components/SkillsAndInterests';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
+    <div className="min-h-screen bg-background text-foreground relative ">
       {/* Navigation */}
       <Navigation />
       
@@ -45,7 +45,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="py-8 text-center border-t border-border">
         <p className="text-muted-foreground">
-          © 2024 Md Golam Rabbi. All rights reserved.
+          © {new Date().getFullYear()} Md Golam Rabbi. All rights reserved.
         </p>
       </footer>
     </div>

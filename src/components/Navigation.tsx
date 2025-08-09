@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { RxHamburgerMenu } from "react-icons/rx";
+import { MobileNav } from './MobileNav';
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isNavOpen, setIsNavOpen] = useState<boolean>(true);
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -12,7 +14,6 @@ const Navigation = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
@@ -26,17 +27,13 @@ const Navigation = () => {
 
   return (
     <nav className={cn(
-      "relative top-0 transition-all duration-500",
+      "top-0 transition-all duration-500 sticky z-50",
       isScrolled 
-        ? "glass-effect shadow-lg" 
-        : "bg-transparent"
+        ? "md:glass-effect shadow-lg" 
+        : "md:bg-transparent"
     )}>
       <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-center">
-          {/* <a href="#home" className="text-base xl:text-2xl font-bold gradient-text">
-            MD G. RABBI
-          </a> */}
-          
+        <div className="flex items-center justify-center relative">
           <div className="hidden md:flex items-center space-x-2 md:space-x-4 lg:space-x-8">
             {navItems.map((item) => (
               <a
@@ -49,8 +46,17 @@ const Navigation = () => {
               </a>
             ))}
           </div>
+            
+            
         </div>
       </div>
+      <RxHamburgerMenu  
+            onClick={() => {
+              console.log("clicled");
+              setIsNavOpen(!isNavOpen)
+            }}
+            className=' fixed md:hidden text-3xl cursor-pointer right-6 top-4 mb-2 z-[50]'/>
+      <MobileNav isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen}/>
     </nav>
   );
 };

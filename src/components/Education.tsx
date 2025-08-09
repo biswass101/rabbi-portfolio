@@ -28,28 +28,28 @@ const Education = () => {
       institution: "City University",
       major: "Human Resource Management",
       year: "2022",
-      cgpa: "3.61/4.00"
+     
     },
     {
       degree: "B.Sc. in CSE",
       institution: "City University",
       major: "Computer Science & Engineering",
       year: "2018",
-      cgpa: "2.78/4.00"
+      
     },
     {
       degree: "H.S.C",
       institution: "Govt. Debendra College",
       major: "Science",
       year: "2013",
-      cgpa: "3.30/5.00"
+      
     },
     {
       degree: "S.S.C",
       institution: "Alhaj Jafor Bepari High School",
       major: "Science",
       year: "2010",
-      cgpa: "3.94/5.00"
+      
     }
   ];
 
@@ -71,7 +71,7 @@ const Education = () => {
                 }`}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="grid md:grid-cols-5 gap-4 items-center">
+                <div className="grid md:grid-cols-4 gap-4 items-center">
                   <div className="flex items-center space-x-3">
                     <div className="p-2 rounded-lg bg-primary/10">
                       <GraduationCap className="w-6 h-6 text-primary" />
@@ -89,14 +89,9 @@ const Education = () => {
                     <p className="text-muted-foreground">{edu.major}</p>
                   </div>
                   
-                  <div>
+                  <div className='flex md:justify-end'>
                     <p className="text-muted-foreground">{edu.year}</p>
                   </div>
-                  
-                  {/* <div className="flex items-center space-x-2">
-                    <Award className="w-4 h-4 text-accent" />
-                    <span className="font-semibold text-accent">{edu.cgpa}</span>
-                  </div> */}
                 </div>
               </div>
             ))}

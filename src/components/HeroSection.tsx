@@ -19,23 +19,23 @@ const HeroSection = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float animation-delay-1000"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 py-2 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Text Section */}
           <div className={`space-y-6 ${isVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
             <div className="space-y-4">
-              <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold">
-                <span className="text-foreground">Hi I am </span>
+              <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold">
+                <span className="text-foreground">Hi I'm </span>
                 <span className="gradient-text typewriter">Md Golam Rabbi</span>
               </h1>
-              <p className="text-xl md:text-2xl text-primary font-semibold">
+              <p className="text-lg sm:text-xl md:text-2xl text-primary font-semibold">
                 IT Support and Infrastructure Specialist
               </p>
             </div>
           </div>
 
           {/* Image Section */}
-          <div className={`flex justify-center ${isVisible ? 'scale-in animate' : 'scale-in'} animation-delay-500`}>
+          <div className={`flex justify-center md:justify-end ${isVisible ? 'scale-in animate' : 'scale-in'} animation-delay-500`}>
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-75 animate-pulse-glow"></div>
               <img
@@ -51,13 +51,15 @@ const HeroSection = () => {
         <div className={`mt-16 ${isVisible ? 'fade-in-up animate' : 'fade-in-up'} animation-delay-1000`}>
           <div className="glass-effect rounded-2xl p-8 container mx-auto">
             <h2 className="text-2xl font-bold text-center mb-6 gradient-text">Professional Summary</h2>
-            <p className="text-lg text-center leading-relaxed text-muted-foreground">
+           
+                <p className=" text-lg text-left leading-relaxed text-muted-foreground">
               Experienced IT Support and Infrastructure Specialist with 6+ years of proven expertise in system
               administration, end-user support, and infrastructure operations. Skilled in Windows/Linux
               environments, Active Directory, Microsoft 365, and network troubleshooting. Known for
               delivering reliable IT services, optimizing processes, and ensuring high availability across diverse
               IT systems.
             </p>
+            
           </div>
         </div>
       </div>
