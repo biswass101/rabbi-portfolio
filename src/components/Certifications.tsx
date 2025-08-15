@@ -7,6 +7,7 @@ import {
   Network, 
   Code 
 } from 'lucide-react';
+import { certifications } from '@/constants';
 
 const Certifications = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,50 +30,7 @@ const Certifications = () => {
     return () => observer.disconnect();
   }, []);
 
-  const certifications = [
-    {
-      icon: Award,
-      title: "Lean Six Sigma White Belt",
-      provider: "Gildan",
-      duration: "Jul 2024 – Sep 2024",
-      color: "from-yellow-500 to-orange-500"
-    },
-    {
-      icon: Server,
-      title: "Windows Server 2022 Administration",
-      provider: "Udemy",
-      duration: "26 hrs",
-      color: "from-blue-500 to-indigo-500"
-    },
-    {
-      icon: Mail,
-      title: "Office 365 & Exchange Online",
-      provider: "Udemy",
-      duration: "5.5 hrs",
-      color: "from-green-500 to-teal-500"
-    },
-    {
-      icon: Wrench,
-      title: "IT Troubleshooting Skills",
-      provider: "Udemy",
-      duration: "1.5 hrs",
-      color: "from-red-500 to-pink-500"
-    },
-    {
-      icon: Network,
-      title: "CCNA",
-      provider: "CSL Training",
-      duration: "72 hrs",
-      color: "from-purple-500 to-violet-500"
-    },
-    {
-      icon: Code,
-      title: "Web Design & Development (PHP)",
-      provider: "BITM",
-      duration: "Full Course",
-      color: "from-cyan-500 to-blue-500"
-    }
-  ];
+ 
 
   return (
     <section ref={sectionRef} id="certifications" className="py-20 relative">

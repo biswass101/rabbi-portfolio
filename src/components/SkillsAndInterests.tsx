@@ -1,13 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { 
   Brain, 
-  MessageCircle, 
-  Users, 
-  Zap, 
-  Globe, 
   Languages,
   Heart
 } from 'lucide-react';
+import { interests, languages, softSkills } from '@/constants';
 
 const SkillsAndInterests = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,45 +27,11 @@ const SkillsAndInterests = () => {
     return () => observer.disconnect();
   }, []);
 
-  const softSkills = [
-    {
-      icon: Brain,
-      title: "Strong analytical and troubleshooting ability"
-    },
-    {
-      icon: MessageCircle,
-      title: "Effective communication and documentation"
-    },
-    {
-      icon: Users,
-      title: "Team collaboration and leadership"
-    },
-    {
-      icon: Zap,
-      title: "Adaptability in fast-paced environments"
-    }
-  ];
+  
 
-  const languages = [
-    {
-      language: "Bangla",
-      writing: "Excellent",
-      reading: "Excellent",
-      speaking: "Excellent"
-    },
-    {
-      language: "English",
-      writing: "Excellent",
-      reading: "Excellent",
-      speaking: "Excellent"
-    }
-  ];
 
-  const interests = [
-    "Playing Cricket, Football & Badminton",
-    "Drama & Literature",
-    "Social Work & Travel"
-  ];
+
+
 
   return (
     <section ref={sectionRef} className="py-20 relative">

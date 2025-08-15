@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { GraduationCap, Award } from 'lucide-react';
+import { GraduationCap} from 'lucide-react';
+import { educations } from '@/constants';
 
 const Education = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,36 +23,6 @@ const Education = () => {
     return () => observer.disconnect();
   }, []);
 
-  const educations = [
-    {
-      degree: "MBA",
-      institution: "City University",
-      major: "Human Resource Management",
-      year: "2022",
-     
-    },
-    {
-      degree: "B.Sc. in CSE",
-      institution: "City University",
-      major: "Computer Science & Engineering",
-      year: "2018",
-      
-    },
-    {
-      degree: "H.S.C",
-      institution: "Govt. Debendra College",
-      major: "Science",
-      year: "2013",
-      
-    },
-    {
-      degree: "S.S.C",
-      institution: "Alhaj Jafor Bepari High School",
-      major: "Science",
-      year: "2010",
-      
-    }
-  ];
 
   return (
     <section ref={sectionRef} id="education" className="py-20 relative">

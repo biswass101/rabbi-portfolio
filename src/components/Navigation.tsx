@@ -16,7 +16,7 @@ const Navigation = () => {
   }, []);
   const navItems = [
     { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
+    { label: 'About', href: '#home' },
     { label: 'Competencies', href: '#competencies' },
     { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
@@ -52,7 +52,6 @@ const Navigation = () => {
       </div>
       <RxHamburgerMenu  
             onClick={() => {
-              console.log("clicled");
               setIsNavOpen(!isNavOpen)
             }}
             className=' fixed md:hidden text-3xl cursor-pointer right-6 top-4 mb-2 z-[50]'/>

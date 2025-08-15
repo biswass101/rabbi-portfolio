@@ -9,7 +9,7 @@ export const MobileNav = (props: MobileNavProps) => {
     const {isNavOpen, setIsNavOpen} = props
     const navItems = [
     { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
+    { label: 'About', href: '#home' },
     { label: 'Competencies', href: '#competencies' },
     { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },

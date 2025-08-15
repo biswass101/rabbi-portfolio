@@ -1,15 +1,5 @@
+import { skillCategories } from '@/constants';
 import { useEffect, useRef, useState } from 'react';
-import { 
-  Server, 
-  Settings, 
-  Network, 
-  Cloud, 
-  Shield, 
-  Code,
-  Monitor,
-  Wrench
-} from 'lucide-react';
-
 const TechnicalSkills = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -31,44 +21,7 @@ const TechnicalSkills = () => {
     return () => observer.disconnect();
   }, []);
 
-  const skillCategories = [
-    {
-      icon: Server,
-      title: "Platforms",
-      skills: ["Windows Server", "Ubuntu/CentOS", "Microsoft 365"],
-      color: "from-blue-500 to-purple-600"
-    },
-    {
-      icon: Wrench,
-      title: "Tools",
-      skills: ["ServiceNow", "SCCM", "TeamViewer", "AnyDesk"],
-      color: "from-green-500 to-teal-600"
-    },
-    {
-      icon: Network,
-      title: "Networking",
-      skills: ["Cisco Switches/Routers", "TCP/IP", "DNS", "DHCP", "VPN"],
-      color: "from-orange-500 to-red-600"
-    },
-    {
-      icon: Cloud,
-      title: "Cloud",
-      skills: ["Azure AD", "SharePoint", "OneDrive"],
-      color: "from-cyan-500 to-blue-600"
-    },
-    {
-      icon: Shield,
-      title: "Security",
-      skills: ["CrowdStrike", "Symantec", "BitLocker", "MFA"],
-      color: "from-red-500 to-pink-600"
-    },
-    {
-      icon: Code,
-      title: "Scripting",
-      skills: ["PowerShell (automation, reports)", "Bash (basic)"],
-      color: "from-purple-500 to-indigo-600"
-    }
-  ];
+
 
   return (
     <section ref={sectionRef} id="skills" className="py-20 relative">

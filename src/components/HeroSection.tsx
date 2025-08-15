@@ -25,8 +25,8 @@ const HeroSection = () => {
           <div className={`space-y-6 ${isVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
             <div className="space-y-4">
               <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold">
-                <span className="text-foreground">Hi I'm </span>
-                <span className="gradient-text typewriter">Md Golam Rabbi</span>
+                <span className="text-foreground">Hi I'm </span> <br/>
+                <span className="gradient-text">Md Golam Rabbi</span>
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-primary font-semibold">
                 IT Support and Infrastructure Specialist

@@ -8,6 +8,7 @@ import ProjectHighlights from '@/components/ProjectHighlights';
 import Education from '@/components/Education';
 import Certifications from '@/components/Certifications';
 import SkillsAndInterests from '@/components/SkillsAndInterests';
+import { GotoTop } from '@/components/GotoTop';
 
 const Index = () => {
   return (
@@ -48,6 +49,9 @@ const Index = () => {
           © {new Date().getFullYear()} Md Golam Rabbi. All rights reserved.
         </p>
       </footer>
+
+      {/* Go to Top */}
+      <GotoTop/>
     </div>
   );
 };

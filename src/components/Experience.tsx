@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Briefcase, Calendar } from 'lucide-react';
+import { Calendar } from 'lucide-react';
+import { experiences } from '@/constants';
 
 const Experience = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -21,33 +22,6 @@ const Experience = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  const experiences = [
-    {
-      title: "Sr. Technician – IT Support",
-      company: "GAB Limited",
-      period: "Mar 2024 – Present",
-      responsibilities: [
-        "Delivered L1–L2 technical support for users across hardware, software, and network.",
-        "Managed AD user accounts, group policies, and system access.",
-        "Monitored system health using Nagios; ensured minimal downtime.",
-        "Coordinated with internal teams and vendors for issue resolution and procurement.",
-        "Maintained IT documentation and provided end-user training."
-      ]
-    },
-    {
-      title: "Supervisor – IT",
-      company: "GAB Limited",
-      period: "May 2019 – Feb 2024",
-      responsibilities: [
-        "Led infrastructure projects across manufacturing and office facilities.",
-        "Oversaw telecom setup, IT installations, and preventive maintenance.",
-        "Managed ticket resolution through the helpdesk system.",
-        "Enforced IT policies and trained staff to maintain compliance and security.",
-        "Maintained hardware/software inventory and implemented SOPs."
-      ]
-    }
-  ];
 
   return (
     <section ref={sectionRef} id="experience" className="py-20 relative">

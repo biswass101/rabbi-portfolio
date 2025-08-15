@@ -1,14 +1,5 @@
+import { competencies } from '@/constants';
 import { useEffect, useRef, useState } from 'react';
-import { 
-  Headphones, 
-  Monitor, 
-  Users, 
-  Network, 
-  Settings, 
-  Eye, 
-  UserCheck, 
-  FileText 
-} from 'lucide-react';
 
 const CoreCompetencies = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,49 +21,6 @@ const CoreCompetencies = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  const competencies = [
-    {
-      icon: Headphones,
-      title: "IT Support (Tier 1–3) & Troubleshooting",
-      description: "Multi-tier technical support expertise"
-    },
-    {
-      icon: Monitor,
-      title: "Windows/Linux OS, Microsoft 365 & Exchange",
-      description: "Cross-platform system administration"
-    },
-    {
-      icon: Users,
-      title: "Active Directory & Group Policy",
-      description: "User and system policy management"
-    },
-    {
-      icon: Network,
-      title: "Network Support (LAN/WAN, DNS, DHCP, VPN)",
-      description: "Comprehensive network infrastructure"
-    },
-    {
-      icon: Settings,
-      title: "ServiceNow & ITIL Incident Management",
-      description: "Service management and best practices"
-    },
-    {
-      icon: Eye,
-      title: "SCCM, TeamViewer, AnyDesk, Nagios Monitoring",
-      description: "System monitoring and remote support"
-    },
-    {
-      icon: UserCheck,
-      title: "User Onboarding/Offboarding & Asset Management",
-      description: "Complete lifecycle management"
-    },
-    {
-      icon: FileText,
-      title: "Documentation & Knowledge Base Creation",
-      description: "Process documentation and knowledge sharing"
-    }
-  ];
 
   return (
     <section ref={sectionRef} id="competencies" className="py-20 relative">
