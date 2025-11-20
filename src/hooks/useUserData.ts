@@ -14,7 +14,8 @@ import type {
 } from "../types/index";
 
 export const useUserData = (userId: string) => {
-    const [userRes, setUserRes] = useState<{name: string; img: string; designation: string; summary: string}>()
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [userRes, setUserRes] = useState<{name: string; img: string; designation: string; summary: string}>()
   const [contacts, setContacts] = useState<IContactItem[]>([]);
   const [competencies, setCompetencies] = useState<ICompetency[]>([]);
   const [skillCategories, setSkillCategories] = useState<ISkillCategory[]>([]);
@@ -31,6 +32,7 @@ export const useUserData = (userId: string) => {
 
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         const [
             userRes,
           contactsRes,
@@ -69,6 +71,9 @@ export const useUserData = (userId: string) => {
         setInterests(interestsRes.data.data || []);
       } catch (err) {
         console.error("Error fetching user data", err);
+        
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -76,6 +81,7 @@ export const useUserData = (userId: string) => {
   }, [userId]);
 
   return {
+    isLoading,
     userRes,
     contacts,
     competencies,

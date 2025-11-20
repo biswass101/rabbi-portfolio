@@ -3,7 +3,7 @@ import { useUserData } from '@/hooks/useUserData';
 const userId = import.meta.env.VITE_USERID
 
 const Certifications = () => {
-    const {certifications} = useUserData(userId);
+    const {certifications, isLoading} = useUserData(userId);
   
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -30,35 +30,58 @@ const Certifications = () => {
   return (
     <section ref={sectionRef} id="certifications" className="py-20 relative">
       <div className="container mx-auto px-6">
-        <div className={`text-center mb-16 ${isVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
+        <div className={`text-center mb-16 `}>
           <h2 className="text-4xl font-bold mb-4 gradient-text">Certifications & Training</h2>
           <p className="text-xl text-muted-foreground">Professional development and continuous learning</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {certifications.map((cert, index) => {
-            return (
-              <div
-                key={index}
-                className={`glass-effect rounded-xl p-6 hover:scale-105 transition-all duration-500 group ${
-                  isVisible ? 'fade-in-up animate' : 'fade-in-up'
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="space-y-4">
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${cert.color} p-3`}>
-                    <img src={cert.icon} className="w-6 h-6 text-white" />
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">{cert.title}</h3>
-                    <p className="text-primary font-semibold">{cert.provider}</p>
-                    <p className="text-sm text-muted-foreground">{cert.duration}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {isLoading
+  ? // SHIMMER LOADING STATE
+    Array.from({ length: 6 }).map((_, index) => (
+      <div
+        key={index}
+        className="glass-effect rounded-xl p-6 transition-all duration-500 animate-pulse"
+        style={{ animationDelay: `${index * 100}ms` }}
+      >
+        <div className="space-y-4">
+          {/* Icon Circle */}
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-700 p-3"></div>
+          
+          {/* Title */}
+          <div className="h-5 w-32 rounded bg-gray-700 mb-2"></div>
+          
+          {/* Provider */}
+          <div className="h-4 w-24 rounded bg-gray-700 mb-1"></div>
+          
+          {/* Duration */}
+          <div className="h-3 w-20 rounded bg-gray-700"></div>
+        </div>
+      </div>
+    ))
+  : // REAL DATA
+    certifications.map((cert, index) => (
+      <div
+        key={index}
+        className={`glass-effect rounded-xl p-6 hover:scale-105 transition-all duration-500 group ${
+          isVisible ? 'fade-in-up animate' : 'fade-in-up'
+        }`}
+        style={{ animationDelay: `${index * 100}ms` }}
+      >
+        <div className="space-y-4">
+          <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${cert.color} p-3`}>
+            <img src={cert.icon} className="w-6 h-6 text-white" />
+          </div>
+          
+          <div>
+            <h3 className="text-lg font-bold text-foreground mb-2">{cert.title}</h3>
+            <p className="text-primary font-semibold">{cert.provider}</p>
+            <p className="text-sm text-muted-foreground">{cert.duration}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+
         </div>
       </div>
     </section>

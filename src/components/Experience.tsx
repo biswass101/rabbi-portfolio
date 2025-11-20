@@ -4,7 +4,7 @@ import { useUserData } from '@/hooks/useUserData';
 const userId = import.meta.env.VITE_USERID
 
 const Experience = () => {
-    const {experiences} = useUserData(userId);
+    const {experiences, isLoading} = useUserData(userId);
   
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -29,7 +29,7 @@ const Experience = () => {
   return (
     <section ref={sectionRef} id="experience" className="py-20 relative">
       <div className="container mx-auto px-6">
-        <div className={`text-center mb-16 ${isVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
+        <div className={`text-center mb-16 `}>
           <h2 className="text-4xl font-bold mb-4 gradient-text">Professional Experience</h2>
           <p className="text-xl text-muted-foreground">My journey in IT support and infrastructure</p>
         </div>
@@ -39,12 +39,51 @@ const Experience = () => {
             {/* Timeline line */}
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/30"></div>
             
-            {experiences.map((exp, index) => (
+            {isLoading
+  ? // SHIMMER LOADING STATE
+    Array.from({ length: 3 }).map((_, index) => (
+      <div
+        key={index}
+        className="relative mb-12"
+      >
+        {/* Timeline dot */}
+        <div className="absolute left-6 w-4 h-4 rounded-full border-4 border-background bg-gray-700 animate-pulse"></div>
+        
+        {/* Content */}
+        <div className="ml-20">
+          <div className="glass-effect rounded-xl p-6 transition-all duration-300 animate-pulse">
+            <div className="flex items-start justify-between mb-4">
+              {/* Title & Company */}
+              <div className="space-y-2">
+                <div className="h-6 w-40 rounded bg-gray-700"></div>
+                <div className="h-5 w-32 rounded bg-gray-700"></div>
+              </div>
+
+              {/* Period */}
+              <div className="flex items-center space-x-2">
+                <div className="h-4 w-4 rounded bg-gray-700"></div>
+                <div className="h-4 w-16 rounded bg-gray-700"></div>
+              </div>
+            </div>
+            
+            {/* Responsibilities */}
+            <ul className="space-y-2">
+              {Array.from({ length: 3 }).map((_, respIndex) => (
+                <li key={respIndex} className="flex items-start space-x-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gray-700 mt-2 flex-shrink-0"></div>
+                  <div className="h-4 w-3/4 rounded bg-gray-700"></div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    ))
+  : // REAL DATA
+   experiences.map((exp, index) => (
               <div
                 key={index}
-                className={`relative mb-12 ${
-                  isVisible ? 'slide-in-right animate' : 'slide-in-right'
-                }`}
+                className={`relative mb-12 `}
                 style={{ animationDelay: `${index * 300}ms` }}
               >
                 {/* Timeline dot */}
@@ -76,6 +115,7 @@ const Experience = () => {
                 </div>
               </div>
             ))}
+
           </div>
         </div>
       </div>

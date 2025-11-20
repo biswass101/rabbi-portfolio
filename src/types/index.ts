@@ -1,6 +1,6 @@
 
 export interface IContactItem {
-  id: string;
+  _id: string;
   iconUrl?: string; // URL if dynamic icon
   detail: string;
   href: string;
