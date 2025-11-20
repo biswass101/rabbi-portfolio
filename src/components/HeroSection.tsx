@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
-import profilePhoto from '../../assets/profile-photo.jpg'; // Adjust the path as necessary
+import { useUserData } from '@/hooks/useUserData';
+const userId = import.meta.env.VITE_USERID
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+    const {userRes} = useUserData(userId);
 
   useEffect(() => {
     setIsVisible(true);
@@ -26,10 +28,10 @@ const HeroSection = () => {
             <div className="space-y-4">
               <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold">
                 <span className="text-foreground">Hi I'm </span> <br/>
-                <span className="gradient-text">Md Golam Rabbi</span>
+                <span className="gradient-text">{userRes && userRes.name}</span>
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-primary font-semibold">
-                IT Support and Infrastructure Specialist
+                {userRes && userRes.designation}
               </p>
             </div>
           </div>
@@ -39,7 +41,7 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-75 animate-pulse-glow"></div>
               <img
-                src={profilePhoto}
+                src={userRes && userRes.img}
                 alt="Md Golam Rabbi"
                 className="relative h-56 w-56 md:w-60 md:h-60 lg:w-80 lg:h-80 object-cover rounded-full border-4 border-primary/50 shadow-2xl"
               />
@@ -53,11 +55,7 @@ const HeroSection = () => {
             <h2 className="text-2xl font-bold text-center mb-6 gradient-text">Professional Summary</h2>
            
                 <p className=" text-lg text-left leading-relaxed text-muted-foreground">
-              Experienced IT Support and Infrastructure Specialist with 6+ years of proven expertise in system
-              administration, end-user support, and infrastructure operations. Skilled in Windows/Linux
-              environments, Active Directory, Microsoft 365, and network troubleshooting. Known for
-              delivering reliable IT services, optimizing processes, and ensuring high availability across diverse
-              IT systems.
+              {userRes && userRes.summary}
             </p>
             
           </div>

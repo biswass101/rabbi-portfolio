@@ -4,9 +4,12 @@ import {
   Languages,
   Heart
 } from 'lucide-react';
-import { interests, languages, softSkills } from '@/constants';
+import { useUserData } from '@/hooks/useUserData';
+const userId = import.meta.env.VITE_USERID
 
 const SkillsAndInterests = () => {
+      const {softSkills, interests, languages} = useUserData(userId);
+
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -46,7 +49,6 @@ const SkillsAndInterests = () => {
             
             <div className="space-y-4">
               {softSkills.map((skill, index) => {
-                const Icon = skill.icon;
                 return (
                   <div
                     key={index}
@@ -54,7 +56,7 @@ const SkillsAndInterests = () => {
                   >
                     <div className="flex items-center space-x-3">
                       <div className="p-2 rounded-lg bg-primary/10">
-                        <Icon className="w-5 h-5 text-primary" />
+                        <img src={skill.icon} className="w-5 h-5 text-primary" />
                       </div>
                       <span className="text-sm">{skill.title}</span>
                     </div>
@@ -107,7 +109,7 @@ const SkillsAndInterests = () => {
                 >
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 rounded-full bg-primary"></div>
-                    <span className="text-sm">{interest}</span>
+                    <span className="text-sm">{interest.title}</span>
                   </div>
                 </div>
               ))}

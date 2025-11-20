@@ -1,15 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { 
-  Award, 
-  Server, 
-  Mail, 
-  Wrench, 
-  Network, 
-  Code 
-} from 'lucide-react';
-import { certifications } from '@/constants';
+import { useUserData } from '@/hooks/useUserData';
+const userId = import.meta.env.VITE_USERID
 
 const Certifications = () => {
+    const {certifications} = useUserData(userId);
+  
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -42,7 +37,6 @@ const Certifications = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {certifications.map((cert, index) => {
-            const Icon = cert.icon;
             return (
               <div
                 key={index}
@@ -53,7 +47,7 @@ const Certifications = () => {
               >
                 <div className="space-y-4">
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${cert.color} p-3`}>
-                    <Icon className="w-6 h-6 text-white" />
+                    <img src={cert.icon} className="w-6 h-6 text-white" />
                   </div>
                   
                   <div>

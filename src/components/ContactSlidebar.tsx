@@ -1,13 +1,14 @@
-import { contactItems } from "@/constants";
+import { useUserData } from "@/hooks/useUserData";
 import { useState } from "react";
-
+const userId = import.meta.env.VITE_USERID
 const ContactSidebar = () => {
+  const {contacts} = useUserData(userId);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   return (
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50">
       <div className="flex flex-col space-y-4">
-        {contactItems.map((item) => {
-          const Icon = item.icon;
+        {contacts.map((item) => {
+          // const Icon = item.icon;
           return (
             <div
               key={item.id}
@@ -16,12 +17,13 @@ const ContactSidebar = () => {
               onMouseLeave={() => setHoveredItem(null)}
             >
               <a
-                href={item.href}
+                href={item.detail}
                 target={item.id === "linkedin" ? "_blank" : undefined}
                 rel={item.id === "linkedin" ? "noopener noreferrer" : undefined}
                 className="block w-10 h-10 md:w-12 md:h-12 glass-effect rounded-full flex items-center justify-center text-primary hover:text-accent transition-all duration-300 hover:scale-110 hover:animate-glow"
               >
-                <Icon size={20} />
+                {/* <Icon size={20} /> */}
+                <img src={item.iconUrl} className="rounded-full"/>
               </a>
 
               {hoveredItem === item.id && (

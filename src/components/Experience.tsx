@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Calendar } from 'lucide-react';
-import { experiences } from '@/constants';
+import { useUserData } from '@/hooks/useUserData';
+const userId = import.meta.env.VITE_USERID
 
 const Experience = () => {
+    const {experiences} = useUserData(userId);
+  
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 

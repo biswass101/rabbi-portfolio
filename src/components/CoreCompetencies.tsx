@@ -1,7 +1,10 @@
-import { competencies } from '@/constants';
+import { useUserData } from '@/hooks/useUserData';
 import { useEffect, useRef, useState } from 'react';
+const userId = import.meta.env.VITE_USERID
 
 const CoreCompetencies = () => {
+    const {competencies} = useUserData(userId);
+  
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -32,7 +35,6 @@ const CoreCompetencies = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {competencies.map((competency, index) => {
-            const Icon = competency.icon;
             return (
               <div
                 key={index}
@@ -43,7 +45,7 @@ const CoreCompetencies = () => {
               >
                 <div className="text-center space-y-4">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="w-8 h-8 text-primary" />
+                    <img src={competency.icon} className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="font-semibold text-sm leading-tight">{competency.title}</h3>
                   <p className="text-xs text-muted-foreground">{competency.description}</p>

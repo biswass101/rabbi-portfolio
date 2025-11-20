@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { projects } from "@/constants";
+import { useUserData } from "@/hooks/useUserData";
+const userId = import.meta.env.VITE_USERID
 
 const ProjectHighlights = () => {
+      const {projects} = useUserData(userId);
+  
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -40,7 +43,6 @@ const ProjectHighlights = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {projects.map((project, index) => {
-            const Icon = project.icon;
             return (
               <div
                 key={index}
@@ -54,7 +56,7 @@ const ProjectHighlights = () => {
                     <div
                       className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r ${project.color} p-4 animate-float`}
                     >
-                      <Icon className="w-8 h-8 text-white" />
+                      <img src={project.icon} className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-primary">
                       {project.title}

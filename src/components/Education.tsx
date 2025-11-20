@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { GraduationCap} from 'lucide-react';
-import { educations } from '@/constants';
+import { useUserData } from '@/hooks/useUserData';
+const userId = import.meta.env.VITE_USERID
 
 const Education = () => {
+  const {educations} = useUserData(userId);
+  
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
