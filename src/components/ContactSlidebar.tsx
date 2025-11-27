@@ -2,9 +2,8 @@ import { useUserData } from "@/hooks/useUserData";
 import { useState } from "react";
 import { ShimmerDiv } from "shimmer-effects-react";
 const userId = import.meta.env.VITE_USERID
-const ContactSidebar = () => {
+const ContactSidebar = ({hoveredItem, setHoveredItem}: {hoveredItem: string, setHoveredItem: any}) => {
   const {contacts, isLoading} = useUserData(userId);
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [dummyContacts, setDummyContacts] = useState(Array(4).fill(null));
   return (
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50">

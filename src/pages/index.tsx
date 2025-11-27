@@ -10,47 +10,43 @@ import Certifications from '@/components/Certifications';
 import SkillsAndInterests from '@/components/SkillsAndInterests';
 import { GotoTop } from '@/components/GotoTop';
 
+import { useState, useEffect } from 'react';
+
 const Index = () => {
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log('scrolling');
+      setHoveredItem(null);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background text-foreground relative ">
-      {/* Navigation */}
+    <div className="min-h-screen bg-background text-foreground relative">
       <Navigation />
-      
-      {/* Contact Sidebar */}
-      <ContactSidebar />
-      
-      {/* Hero Section */}
+      <ContactSidebar hoveredItem={hoveredItem as string} setHoveredItem={setHoveredItem}/>
       <HeroSection />
-      
-      {/* Core Competencies Section */}
       <CoreCompetencies />
-      
-      {/* Technical Skills Section */}
       <TechnicalSkills />
-      
-      {/* Experience Section */}
       <Experience />
-      
-      {/* Project Highlights Section */}
       <ProjectHighlights />
-      
-      {/* Education Section */}
       <Education />
-      
-      {/* Certifications Section */}
       <Certifications />
-      
-      {/* Skills and Interests Section */}
       <SkillsAndInterests />
-      
-      {/* Footer */}
+
       <footer className="py-8 text-center border-t border-border">
         <p className="text-muted-foreground">
           © {new Date().getFullYear()} Md Golam Rabbi. All rights reserved.
         </p>
       </footer>
 
-      {/* Go to Top */}
       <GotoTop/>
     </div>
   );

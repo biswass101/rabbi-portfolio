@@ -5,9 +5,6 @@ type MobileNavProps = {
   setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const manageURI = import.meta.env.VITE_MANAGE_URL
-
-
 export const MobileNav = (props: MobileNavProps) => {
     const {isNavOpen, setIsNavOpen} = props
     const navItems = [
@@ -19,7 +16,6 @@ export const MobileNav = (props: MobileNavProps) => {
     { label: 'Projects', href: '#projects' },
     { label: 'Education', href: '#education' },
     { label: 'Certifications', href: '#certifications' },
-        { label: "Manage", href: manageURI}
 
   ];
     return (

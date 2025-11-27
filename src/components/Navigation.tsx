@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MobileNav } from "./MobileNav";
-const manageURI = import.meta.env.VITE_MANAGE_URL
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
@@ -23,7 +22,6 @@ const Navigation = () => {
     { label: "Projects", href: "#projects" },
     { label: "Education", href: "#education" },
     { label: "Certifications", href: "#certifications" },
-    { label: "Manage", href: manageURI}
   ];
 
   return (
