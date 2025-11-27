@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { useUserData } from "@/hooks/useUserData";
+import { useProjects } from "@/hooks/useUsersData";
+import type { IProject } from "@/types";
 const userId = import.meta.env.VITE_USERID
 
 const ProjectHighlights = () => {
-      const {projects, isLoading} = useUserData(userId);
+      const {projects, isLoading} = useProjects(userId);
   
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -66,7 +67,7 @@ const ProjectHighlights = () => {
       </div>
     ))
   : // REAL DATA
-    projects.map((project, index) => {
+    projects.map((project: IProject, index: number) => {
       return (
         <div
           key={index}

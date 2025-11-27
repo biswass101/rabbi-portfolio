@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { GraduationCap} from 'lucide-react';
-import { useUserData } from '@/hooks/useUserData';
+import { useEducations } from '@/hooks/useUsersData';
+import type { IEducation } from '@/types';
 const userId = import.meta.env.VITE_USERID
 
 const Education = () => {
-  const {educations, isLoading} = useUserData(userId);
+  const {educations, isLoading} = useEducations(userId);
   
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -66,7 +67,7 @@ const Education = () => {
       </div>
     ))
   : // REAL DATA
-    educations.map((edu, index) => (
+    educations.map((edu: IEducation, index: number) => (
       <div
         key={index}
         className={`glass-effect rounded-xl p-6 hover:scale-105 transition-all duration-300 `}

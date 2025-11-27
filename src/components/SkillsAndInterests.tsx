@@ -4,11 +4,14 @@ import {
   Languages,
   Heart
 } from 'lucide-react';
-import { useUserData } from '@/hooks/useUserData';
+import { useInterests, useLanguages, useSoftSkills } from '@/hooks/useUsersData';
+import type { IInterset, ILanguage, ISoftSkill } from '@/types';
 const userId = import.meta.env.VITE_USERID
 
 const SkillsAndInterests = () => {
-      const {softSkills, interests, languages, isLoading} = useUserData(userId);
+      const {interests, isLoading: isInterestLoading} = useInterests(userId);
+      const {softSkills, isLoading: isSoftSkillsLoading} = useSoftSkills(userId);
+      const {languages, isLoading: isLanguagesLoading} = useLanguages(userId);
 
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -48,7 +51,7 @@ const SkillsAndInterests = () => {
             </div>
             
             <div className="space-y-4">
-              {isLoading
+              {isSoftSkillsLoading
   ? // SHIMMER LOADING STATE
     Array.from({ length: 6 }).map((_, index) => (
       <div
@@ -64,7 +67,7 @@ const SkillsAndInterests = () => {
       </div>
     ))
   : // REAL DATA
-    softSkills.map((skill, index) => (
+    softSkills.map((skill: ISoftSkill, index: number) => (
       <div
         key={index}
         className="glass-effect rounded-lg p-4 hover:scale-105 transition-all duration-300"
@@ -97,7 +100,7 @@ const SkillsAndInterests = () => {
                   <span>Speaking</span>
                 </div>
                 
-                {isLoading
+                {isLanguagesLoading
   ? // SHIMMER LOADING STATE
     Array.from({ length: 5 }).map((_, index) => (
       <div key={index} className="grid grid-cols-4 gap-2 text-sm animate-pulse">
@@ -108,7 +111,7 @@ const SkillsAndInterests = () => {
       </div>
     ))
   : // REAL DATA
-    languages.map((lang, index) => (
+    languages.map((lang: ILanguage, index: number) => (
       <div key={index} className="grid grid-cols-4 gap-2 text-sm">
         <span className="font-semibold">{lang.language}</span>
         <span className="text-muted-foreground">{lang.writing}</span>
@@ -129,7 +132,7 @@ const SkillsAndInterests = () => {
             </div>
             
             <div className="space-y-4">
-              {isLoading
+              {isInterestLoading
   ? // SHIMMER LOADING STATE
     Array.from({ length: 6 }).map((_, index) => (
       <div
@@ -145,7 +148,7 @@ const SkillsAndInterests = () => {
       </div>
     ))
   : // REAL DATA
-    interests.map((interest, index) => (
+    interests.map((interest: IInterset, index: number) => (
       <div
         key={index}
         className="glass-effect rounded-lg p-4 hover:scale-105 transition-all duration-300"

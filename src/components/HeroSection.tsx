@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useUserData } from '@/hooks/useUserData';
 import { ShimmerDiv, ShimmerText, ShimmerTitle } from 'shimmer-effects-react'
+import { useProfile } from '@/hooks/useUsersData';
 const userId = import.meta.env.VITE_USERID
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-    const {userRes, isLoading} = useUserData(userId);
+   const { userProfile, isLoading } = useProfile(userId);
 
   useEffect(() => {
     setIsVisible(true);
@@ -29,11 +29,11 @@ const HeroSection = () => {
             <div className="space-y-4">
               <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold">
                 <span className="text-foreground">Hi I'm </span> <br/>
-                {isLoading ? <ShimmerTitle mode="dark" line={1} gap={0} height={40} width={70}/> : <span className="gradient-text">{userRes && userRes.name}</span>}
+                {isLoading ? <ShimmerTitle mode="dark" line={1} gap={0} height={40} width={70}/> : <span className="gradient-text">{userProfile && userProfile.name}</span>}
                 
               </h1>
               {isLoading ? <ShimmerText mode="dark" line={1} gap={0} height={30} width={69}/> : <p className="text-lg sm:text-xl md:text-2xl text-primary font-semibold">
-                {userRes && userRes.designation}
+                {userProfile && userProfile.designation}
               </p>}
               
             </div>
@@ -45,7 +45,7 @@ const HeroSection = () => {
               <div className="absolute -inset-4 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-75 animate-pulse-glow"></div>
               {isLoading ? <ShimmerDiv mode="dark" height={0} width={0} rounded={50} 
               className='relative h-56 w-56 md:w-60 md:h-60 lg:w-80 lg:h-80 object-cover rounded-full border-4 border-primary/50 shadow-2xl'/> : <img
-                src={userRes && userRes.img}
+                src={userProfile && userProfile.img}
                 alt="Md Golam Rabbi"
                 className="relative h-56 w-56 md:w-60 md:h-60 lg:w-80 lg:h-80 object-cover rounded-full border-4 border-primary/50 shadow-2xl"
               />}
@@ -58,7 +58,7 @@ const HeroSection = () => {
           <div className="glass-effect rounded-2xl p-8 container mx-auto">
             <h2 className="text-2xl font-bold text-center mb-6 gradient-text">Professional Summary</h2>
               {isLoading ? <ShimmerText mode="dark" line={3} gap={6} height={20}/> : <p className=" text-lg text-left leading-relaxed text-muted-foreground">
-              {userRes && userRes.summary}
+              {userProfile && userProfile.summary}
             </p>}
                 
             

@@ -63,7 +63,7 @@ export const contactItems: IContactItems[] = [
 ];
 
 export interface ICompetencies {
-  icon: React.ForwardRefExoticComponent<
+  icon: string | React.ForwardRefExoticComponent<
     Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
   >;
   title: string;
@@ -114,7 +114,9 @@ export const competencies: ICompetencies[] = [
 ];
 
 export interface ISkillCategories extends Omit<ICompetencies, "description"> {
-  skills: string[];
+  skills: string[] | React.ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
+  >[];
   color: string;
 }
 

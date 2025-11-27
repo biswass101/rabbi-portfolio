@@ -17,7 +17,6 @@ const Index = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log('scrolling');
       setHoveredItem(null);
     };
 

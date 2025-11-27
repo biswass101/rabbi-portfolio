@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Calendar } from 'lucide-react';
-import { useUserData } from '@/hooks/useUserData';
+import { useExperiences } from '@/hooks/useUsersData';
+import type { IExperience } from '@/types';
 const userId = import.meta.env.VITE_USERID
 
 const Experience = () => {
-    const {experiences, isLoading} = useUserData(userId);
+    const {experiences, isLoading} = useExperiences(userId);
   
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -80,7 +81,7 @@ const Experience = () => {
       </div>
     ))
   : // REAL DATA
-   experiences.map((exp, index) => (
+   experiences.map((exp: IExperience, index: number) => (
               <div
                 key={index}
                 className={`relative mb-12 `}

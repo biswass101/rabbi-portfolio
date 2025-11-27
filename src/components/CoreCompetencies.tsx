@@ -1,9 +1,10 @@
-import { useUserData } from "@/hooks/useUserData";
+import type { ICompetencies, IContactItems } from "@/constants";
+import { useCompetencies } from "@/hooks/useUsersData";
 import { useEffect, useRef, useState } from "react";
 const userId = import.meta.env.VITE_USERID;
 
 const CoreCompetencies = () => {
-  const { competencies, isLoading } = useUserData(userId);
+  const { competencies, isLoading } = useCompetencies(userId);
 
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -55,7 +56,7 @@ const CoreCompetencies = () => {
                     </div>
                   </div>
                 ))
-            : competencies.map((competency, index) => (
+            : competencies.map((competency: ICompetencies, index: number) => (
                 <div
                   key={index}
                   className={`glass-effect rounded-xl p-6 hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 group ${
@@ -66,7 +67,7 @@ const CoreCompetencies = () => {
                   <div className="text-center space-y-4">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
                       <img
-                        src={competency.icon}
+                        src={competency.icon as string}
                         className="w-8 h-8 text-primary"
                       />
                     </div>

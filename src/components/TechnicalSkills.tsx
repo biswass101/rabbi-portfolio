@@ -1,9 +1,10 @@
-import { useUserData } from "@/hooks/useUserData";
+import type { ISkillCategories } from "@/constants";
+import { useSkillCategories } from "@/hooks/useUsersData";
 import { useEffect, useRef, useState } from "react";
 const userId = import.meta.env.VITE_USERID;
 
 const TechnicalSkills = () => {
-  const { skillCategories, isLoading } = useUserData(userId);
+  const { skillCategories, isLoading } = useSkillCategories(userId);
 
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -68,7 +69,7 @@ const TechnicalSkills = () => {
                   </div>
                 </div>
               ))
-            : skillCategories.map((category, index) => {
+            : skillCategories.map((category: ISkillCategories, index: number) => {
                 return (
                   <div
                     key={index}
@@ -83,7 +84,7 @@ const TechnicalSkills = () => {
                           className={`p-3 rounded-lg bg-gradient-to-r ${category.color} bg-opacity-20`}
                         >
                           <img
-                            src={category.icon}
+                            src={category.icon as string}
                             className="w-6 h-6 text-primary"
                           />
                         </div>
@@ -99,7 +100,7 @@ const TechnicalSkills = () => {
                             className="flex items-center space-x-2 text-sm text-muted-foreground"
                           >
                             <div className="w-2 h-2 rounded-full bg-primary"></div>
-                            <span>{skill}</span>
+                            <span>{skill as string}</span>
                           </div>
                         ))}
                       </div>

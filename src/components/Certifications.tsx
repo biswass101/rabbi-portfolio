@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { useUserData } from '@/hooks/useUserData';
+import { useCertifications } from '@/hooks/useUsersData';
+import type { ICertification } from '@/types';
 const userId = import.meta.env.VITE_USERID
 
 const Certifications = () => {
-    const {certifications, isLoading} = useUserData(userId);
+    const {certifications, isLoading} = useCertifications(userId);
   
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -25,7 +26,7 @@ const Certifications = () => {
     return () => observer.disconnect();
   }, []);
 
- 
+
 
   return (
     <section ref={sectionRef} id="certifications" className="py-20 relative">
@@ -60,7 +61,7 @@ const Certifications = () => {
       </div>
     ))
   : // REAL DATA
-    certifications.map((cert, index) => (
+    certifications.map((cert: ICertification, index: number) => (
       <div
         key={index}
         className={`glass-effect rounded-xl p-6 hover:scale-105 transition-all duration-500 group ${

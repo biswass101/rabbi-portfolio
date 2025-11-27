@@ -1,9 +1,10 @@
-import { useUserData } from "@/hooks/useUserData";
+import { useContacts } from "@/hooks/useUsersData";
+import type { IContactItem } from "@/types";
 import { useState } from "react";
 import { ShimmerDiv } from "shimmer-effects-react";
 const userId = import.meta.env.VITE_USERID
 const ContactSidebar = ({hoveredItem, setHoveredItem}: {hoveredItem: string, setHoveredItem: any}) => {
-  const {contacts, isLoading} = useUserData(userId);
+  const {contacts, isLoading} = useContacts(userId);
   const [dummyContacts, setDummyContacts] = useState(Array(4).fill(null));
   return (
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50">
@@ -21,7 +22,7 @@ const ContactSidebar = ({hoveredItem, setHoveredItem}: {hoveredItem: string, set
               
             </div>
           )
-        }) : contacts.map((item, idx: number) => {
+        }) : contacts.map((item: IContactItem, idx: number) => {
           return (
             <div
               key={idx}
